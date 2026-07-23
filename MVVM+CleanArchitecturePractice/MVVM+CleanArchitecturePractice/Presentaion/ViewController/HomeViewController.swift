@@ -6,20 +6,18 @@
 //
 
 import UIKit
+import Combine
 
 class HomeViewController: UIViewController {
 
   // HomeView をプロパティとして保持
   private let homeView = HomeView()
 
-  // テーブルに表示するリポジトリ一覧（後でモデル型に差し替え予定）
-  private var repositories: [String] = [
-    "apple/swift",
-    "tensorflow/tensorflow",
-    "facebook/react",
-    "microsoft/vscode",
-    "torvalds/linux"
-  ]
+  // ViewModel を保持
+  private let viewModel = HomeViewModel()
+
+  // Combine の購読を保持
+  private var cancellables = Set<AnyCancellable>()
 
   override func loadView() {
     view = homeView
@@ -34,6 +32,20 @@ class HomeViewController: UIViewController {
     // tableView のデリゲート/データソース接続
     homeView.tableView.dataSource = self
     homeView.tableView.delegate = self
+
+    // ViewModel の repositories をバインディング
+    bindViewModel()
+  }
+
+  // MARK: - Binding
+
+  private func bindViewModel() {
+    viewModel.$repositories
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] _ in
+        self?.homeView.tableView.reloadData()
+      }
+      .store(in: &cancellables)
   }
 }
 
@@ -48,12 +60,12 @@ extension HomeViewController: UISearchBarDelegate {
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return repositories.count
+    return viewModel.numberOfRepositories
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    cell.textLabel?.text = repositories[indexPath.row]
+    cell.textLabel?.text = viewModel.repository(at: indexPath.row)
     return cell
   }
 }
