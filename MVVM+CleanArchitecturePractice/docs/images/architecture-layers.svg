@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="780" viewBox="0 0 720 780" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#455A64"/>
+    </marker>
+    <marker id="arrowLight" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#90A4AE"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="780" fill="#FFFFFF"/>
+
+  <!-- title -->
+  <text x="20" y="30" font-size="18" font-weight="700" fill="#212121">レイヤー構成と依存関係</text>
+
+  <!-- legend -->
+  <line x1="430" y1="25" x2="466" y2="25" stroke="#455A64" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="472" y="29" font-size="12" fill="#455A64">依存</text>
+  <line x1="524" y1="25" x2="560" y2="25" stroke="#455A64" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="566" y="29" font-size="12" fill="#455A64">実装（準拠）</text>
+
+  <!-- Presentation band -->
+  <rect x="16" y="48" width="688" height="170" rx="12" fill="#F3F9FE" stroke="#1E88E5" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <rect x="28" y="58" width="150" height="24" rx="12" fill="#1E88E5"/>
+  <text x="103" y="75" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Presentation 層</text>
+
+  <!-- Domain band -->
+  <rect x="16" y="234" width="688" height="232" rx="12" fill="#F4FBF5" stroke="#43A047" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <rect x="28" y="244" width="120" height="24" rx="12" fill="#43A047"/>
+  <text x="88" y="261" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Domain 層</text>
+
+  <!-- Data band -->
+  <rect x="16" y="482" width="688" height="232" rx="12" fill="#FFFDF5" stroke="#FB8C00" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <rect x="28" y="492" width="100" height="24" rx="12" fill="#FB8C00"/>
+  <text x="78" y="509" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Data 層</text>
+
+  <!-- dependency arrows (spine, x=250) -->
+  <line x1="250" y1="138" x2="250" y2="150" stroke="#455A64" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="250" y1="198" x2="250" y2="268" stroke="#455A64" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="258" y="236" font-size="11" fill="#607D8B">依存</text>
+  <line x1="250" y1="316" x2="250" y2="334" stroke="#455A64" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="258" y="330" font-size="11" fill="#607D8B">実装</text>
+  <line x1="250" y1="382" x2="250" y2="400" stroke="#455A64" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="258" y="396" font-size="11" fill="#607D8B">依存</text>
+  <line x1="250" y1="448" x2="250" y2="518" stroke="#455A64" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="258" y="486" font-size="11" fill="#607D8B">実装</text>
+  <line x1="250" y1="566" x2="250" y2="584" stroke="#455A64" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="258" y="580" font-size="11" fill="#607D8B">依存</text>
+  <line x1="250" y1="632" x2="250" y2="650" stroke="#455A64" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="258" y="646" font-size="11" fill="#607D8B">実装</text>
+
+  <!-- side connectors -->
+  <line x1="430" y1="115" x2="454" y2="115" stroke="#90A4AE" stroke-width="2" marker-end="url(#arrowLight)"/>
+  <text x="443" y="108" font-size="10" fill="#90A4AE" text-anchor="middle">保持</text>
+  <line x1="430" y1="359" x2="454" y2="359" stroke="#90A4AE" stroke-width="2" marker-end="url(#arrowLight)"/>
+  <text x="443" y="352" font-size="10" fill="#90A4AE" text-anchor="middle">返す</text>
+
+  <!-- Presentation boxes -->
+  <rect x="70" y="92" width="360" height="46" rx="8" fill="#E3F2FD" stroke="#1E88E5" stroke-width="1.5"/>
+  <text x="250" y="120" font-size="14" font-weight="600" fill="#0D47A1" text-anchor="middle">HomeViewController</text>
+
+  <rect x="456" y="92" width="210" height="46" rx="8" fill="#E3F2FD" stroke="#1E88E5" stroke-width="1.5"/>
+  <text x="561" y="113" font-size="13" font-weight="600" fill="#0D47A1" text-anchor="middle">HomeView</text>
+  <text x="561" y="128" font-size="10" fill="#5472A0" text-anchor="middle">レイアウト</text>
+
+  <rect x="70" y="152" width="360" height="46" rx="8" fill="#E3F2FD" stroke="#1E88E5" stroke-width="1.5"/>
+  <text x="250" y="180" font-size="14" font-weight="600" fill="#0D47A1" text-anchor="middle">HomeViewModel</text>
+
+  <!-- Domain boxes -->
+  <rect x="70" y="270" width="360" height="46" rx="8" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="250" y="289" font-size="10" fill="#2E7D32" text-anchor="middle">«protocol»</text>
+  <text x="250" y="306" font-size="13" font-weight="600" fill="#1B5E20" text-anchor="middle">SearchRepositoriesUseCaseProtocol</text>
+
+  <rect x="70" y="336" width="360" height="46" rx="8" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+  <text x="250" y="364" font-size="13" font-weight="600" fill="#1B5E20" text-anchor="middle">SearchRepositoriesUseCase</text>
+
+  <rect x="456" y="336" width="210" height="46" rx="8" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+  <text x="561" y="357" font-size="13" font-weight="600" fill="#1B5E20" text-anchor="middle">GitHubRepository</text>
+  <text x="561" y="372" font-size="10" fill="#4C8C4A" text-anchor="middle">Entity</text>
+
+  <rect x="70" y="402" width="360" height="46" rx="8" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="250" y="421" font-size="10" fill="#2E7D32" text-anchor="middle">«protocol»</text>
+  <text x="250" y="438" font-size="13" font-weight="600" fill="#1B5E20" text-anchor="middle">GitHubRepositoryProtocol</text>
+
+  <!-- Data boxes -->
+  <rect x="70" y="520" width="360" height="46" rx="8" fill="#FFF8E1" stroke="#FB8C00" stroke-width="1.5"/>
+  <text x="250" y="548" font-size="13" font-weight="600" fill="#E65100" text-anchor="middle">GitHubRepositoryImpl</text>
+
+  <rect x="70" y="586" width="360" height="46" rx="8" fill="#FFF8E1" stroke="#FB8C00" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="250" y="605" font-size="10" fill="#EF6C00" text-anchor="middle">«protocol»</text>
+  <text x="250" y="622" font-size="13" font-weight="600" fill="#E65100" text-anchor="middle">GitHubAPIClientProtocol</text>
+
+  <rect x="70" y="652" width="360" height="46" rx="8" fill="#FFF8E1" stroke="#FB8C00" stroke-width="1.5"/>
+  <text x="250" y="674" font-size="13" font-weight="600" fill="#E65100" text-anchor="middle">GitHubAPIClient</text>
+  <text x="250" y="689" font-size="10" fill="#B26A00" text-anchor="middle">URLSession</text>
+</svg>
