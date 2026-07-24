@@ -13,8 +13,8 @@ class HomeViewController: UIViewController {
   // HomeView をプロパティとして保持
   private let homeView = HomeView()
 
-  // ViewModel を保持
-  private let viewModel = HomeViewModel()
+  // ViewModel を保持（データ層完成までは一時的にスタブUseCaseを注入）
+  private let viewModel = HomeViewModel(useCase: StubSearchRepositoriesUseCase())
 
   // Combine の購読を保持
   private var cancellables = Set<AnyCancellable>()
@@ -51,8 +51,14 @@ class HomeViewController: UIViewController {
 
 // MARK: - UISearchBarDelegate
 extension HomeViewController: UISearchBarDelegate {
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder() // キーボードを閉じる
+    Task {
+      await viewModel.search(query: searchBar.text ?? "")
+    }
+  }
+
   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.text = ""              // 入力中の文字を空にする
     searchBar.resignFirstResponder() // キーボードを閉じる（表示中の場合）
   }
 }
@@ -65,7 +71,7 @@ extension HomeViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    cell.textLabel?.text = viewModel.repository(at: indexPath.row)
+    cell.textLabel?.text = viewModel.repository(at: indexPath.row).fullName
     return cell
   }
 }
