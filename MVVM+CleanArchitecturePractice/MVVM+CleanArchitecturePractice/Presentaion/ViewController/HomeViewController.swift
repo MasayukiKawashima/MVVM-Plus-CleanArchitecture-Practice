@@ -13,8 +13,12 @@ class HomeViewController: UIViewController {
   // HomeView をプロパティとして保持
   private let homeView = HomeView()
 
-  // ViewModel を保持（データ層完成までは一時的にスタブUseCaseを注入）
-  private let viewModel = HomeViewModel(useCase: StubSearchRepositoriesUseCase())
+  // ViewModel を保持（本番用のUseCase＋Repository実装を注入）
+  private let viewModel = HomeViewModel(
+    useCase: SearchRepositoriesUseCase(
+      repository: GitHubRepositoryImpl()
+    )
+  )
 
   // Combine の購読を保持
   private var cancellables = Set<AnyCancellable>()
