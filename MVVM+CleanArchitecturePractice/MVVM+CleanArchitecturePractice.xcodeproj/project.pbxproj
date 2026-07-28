@@ -33,7 +33,7 @@
 		FA22D759300F15B100EAF5AB /* Exceptions for "MVVM+CleanArchitecturePractice" folder in "MVVM+CleanArchitecturePractice" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Application/Info.plist,
 			);
 			target = FA22D730300F15AF00EAF5AB /* MVVM+CleanArchitecturePractice */;
 		};
